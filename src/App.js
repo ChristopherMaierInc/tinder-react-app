@@ -8,7 +8,7 @@ class App extends Component {
     firstName: 'John',
     lastName: 'Dog',
     nickName: 'Big Dog',
-    imageURL: 'https://randomuser.me/api/portraits/men/44.jpg',
+    imageNum: 45,
     editing: false
   }
 
@@ -39,18 +39,30 @@ class App extends Component {
     })
   }
 
-  onChangeimageURL = (event) => {
-    console.log('Image changed!')
-    const input = event.target;
-    const newimageURL = input.value;
+  onChangeIncreaseNum = (event) => {
+    console.log('Image increased!')
     this.setState({
-      imageURL: newimageURL
+      imageNum: this.state.imageNum + 1
+    })
+  }
+
+  onChangeDecreaseNum = (event) => {
+    console.log('Image decreased!')
+    this.setState({
+      imageURL: this.state.imageNum - 1
+    })
+  }
+
+  getRandomUser = (event) => {
+    console.log('Getting random user!')
+    this.setState({
+      imageURL: this.state.imageNum - 1
     })
   }
 
   render() {
 
-    let { firstName, nickName, lastName, imageURL } = this.state;
+    let { firstName, nickName, lastName, imageURL, imageNum, editing } = this.state;
 
     return (
       <div className="App">
@@ -58,7 +70,8 @@ class App extends Component {
           firstName={ firstName }
           nickName={ nickName }
           lastName={ lastName }
-          imageURL={ imageURL } />
+          imageURL={ imageURL }
+          imageNum={ imageNum } />
 
         <label>
           First name:
@@ -76,14 +89,19 @@ class App extends Component {
         </label><br />
 
         <label>
-          <input type="button" value='Increase' onClick={ this.onChangeimageURL }/>
-        </label>
-        
-        <label>
-          <input type="button" value='Decrease' onClick={ this.onChangeimageURL }/>
+             Image:
+          <input type="text" value={ imageURL } onChange={ this.onChangeimageURL }/>
         </label><br />
 
-        <button value="edit" onClick>Edit Mode</button>
+        <label>
+          <input type="button" value="+" onClick={ this.onChangeIncreaseNum }/>
+        </label>
+
+        <label>
+          <input type="button" value="-" onClick={ this.onChangeDecreaseNum }/>
+        </label><br />
+
+        <button value="edit" onClick= { this.getRandomUser }>Random</button>
 
       </div>
     );
