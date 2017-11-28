@@ -8,6 +8,7 @@ class App extends Component {
     firstName: 'John',
     lastName: 'Dog',
     nickName: 'Big Dog',
+    imageURL: 'https://randomuser.me/api/portraits/men/55.jpg',
     imageNum: 45,
     editing: false
   }
@@ -55,9 +56,16 @@ class App extends Component {
 
   getRandomUser = (event) => {
     console.log('Getting random user!')
-    this.setState({
-      imageURL: this.state.imageNum - 1
-    })
+    return fetch('https://randomuser.me/api/')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        let user = responseJson.results [0];
+        this.setState({
+          firstName: user.name.first,
+          lastName: user.name.last,
+          imageURL: user.picture.large
+        })
+      })
   }
 
   render() {
