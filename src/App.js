@@ -8,7 +8,8 @@ class App extends Component {
     firstName: 'John',
     lastName: 'Dog',
     nickName: 'Big Dog',
-    imageURL: 'https://randomuser.me/api/portraits/men/44.jpg'
+    imageURL: 'https://randomuser.me/api/portraits/men/44.jpg',
+    editing: false
   }
 
   onChangeFirstName = (event) => {
@@ -63,19 +64,27 @@ class App extends Component {
           First name:
           <input type="text" value={ firstName } onChange={ this.onChangeFirstName }/>
         </label><br />
+
         <label>
           Nick name:
           <input type="text" value={ nickName } onChange={ this.onChangeNickName }/>
         </label><br />
+
         <label>
           Last name:
           <input type="text" value={ lastName } onChange={ this.onChangeLastName }/>
         </label><br />
+
         <label>
-          Change image:
-          <input type="file" value={ imageURL } onChange={ this.onChangeimageURL }/>
+          <input type="button" value='Increase' onClick={ this.onChangeimageURL }/>
+        </label>
+        
+        <label>
+          <input type="button" value='Decrease' onClick={ this.onChangeimageURL }/>
         </label><br />
-        <button>Save changes</button>
+
+        <button value="edit" onClick>Edit Mode</button>
+
       </div>
     );
   }
