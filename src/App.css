@@ -33,3 +33,8 @@
   border-radius: 50%;
   border: solid rgb(205, 255, 226) 50px;
 }
+
+label input {
+  padding: 10px;
+  margin: 10px;
+}

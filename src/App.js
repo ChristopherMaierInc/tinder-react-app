@@ -38,6 +38,15 @@ class App extends Component {
     })
   }
 
+  onChangeimageURL = (event) => {
+    console.log('Image changed!')
+    const input = event.target;
+    const newimageURL = input.value;
+    this.setState({
+      imageURL: newimageURL
+    })
+  }
+
   render() {
 
     let { firstName, nickName, lastName, imageURL } = this.state;
@@ -61,7 +70,12 @@ class App extends Component {
         <label>
           Last name:
           <input type="text" value={ lastName } onChange={ this.onChangeLastName }/>
-        </label>
+        </label><br />
+        <label>
+          Change image:
+          <input type="file" value={ imageURL } onChange={ this.onChangeimageURL }/>
+        </label><br />
+        <button>Save changes</button>
       </div>
     );
   }
